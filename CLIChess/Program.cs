@@ -7,7 +7,7 @@ namespace CLIChess
         static void Main(string[] args)
         {
             BoardSetup.SetupChessBoard();
-            Console.WriteLine("hi");
+            UserInput.PlayGame();
         }
     }
 }

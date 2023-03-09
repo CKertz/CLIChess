@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CLIChess
 {
-    class BoardSetup
+    public class BoardSetup
     {
         //public static List<BoardTile> ChessBoard = new List<BoardTile>();
 
@@ -32,13 +32,13 @@ namespace CLIChess
                     }
                     AddPieceToBoard(newTile);
                     ChessBoard.Add(newTile);
-                    Console.WriteLine("tile created with coordinates of: " + newTile.XCoordinate + newTile.YCoordinate+ " " + newTile.TileColor);
-                    if (newTile.OccupyingPiece != null)
-                    {
-                        var color = newTile.OccupyingPiece.ChessPieceColor.ToString();
-                        var piecename = newTile.OccupyingPiece.ChessPieceName.ToString();
-                        Console.WriteLine(color + piecename);
-                    }
+                    //Console.WriteLine("tile created with coordinates of: " + newTile.XCoordinate + newTile.YCoordinate+ " " + newTile.TileColor);
+                    //if (newTile.OccupyingPiece != null)
+                    //{
+                    //    var color = newTile.OccupyingPiece.ChessPieceColor.ToString();
+                    //    var piecename = newTile.OccupyingPiece.ChessPieceName.ToString();
+                    //    Console.WriteLine(color + piecename);
+                    //}
                 }
             }
         }
@@ -91,6 +91,8 @@ namespace CLIChess
             {
                 chessPiece.ChessPieceColor = Color.White;
             }
+            chessPiece.XCoordinate = boardTile.XCoordinate;
+            chessPiece.YCoordinate = boardTile.YCoordinate;
             boardTile.OccupyingPiece = chessPiece;
         }
 

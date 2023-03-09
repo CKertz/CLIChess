@@ -9,7 +9,7 @@ namespace CLIChess.Models
 {
     class King : ChessPiece
     {
-        public override void MovePiece()
+        public override void MovePiece(List<BoardTile> chessBoard, char desiredXCoord, int desiredYCoord)
         {
 
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CLIChess.Models
 {
-    class BoardTile
+    public class BoardTile
     {
         public BoardTile(char x, int y)
         {

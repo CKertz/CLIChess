@@ -10,6 +10,8 @@ namespace CLIChess.Models.Pieces
     {
         public PieceName ChessPieceName { get; set; }
         public Color ChessPieceColor { get; set; }
-        public abstract void MovePiece();
+        public int YCoordinate { get; set; }
+        public char XCoordinate { get; set; }
+        public abstract void MovePiece(List<BoardTile> chessBoard, char desiredXCoord, int desiredYCoord);
     }
 }
