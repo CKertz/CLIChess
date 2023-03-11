@@ -40,22 +40,28 @@ namespace CLIChess
             validThirdTokens,
             validFourthTokens
         };
-        public static bool PlayGame()
+        public bool PlayGame()
         {
             while(!gameOver)
             {
                 Console.WriteLine("Enter a valid move");
                 var res = Console.ReadLine();
                 if(IsValidUserInput(res))
-                {                   
+                {
                     //attempt to issue move
+                    IssueMove(res);
                 }
             }
             Console.WriteLine("Game over in " + moveCount + "moves");
             return true;
         }
 
-        private static bool IsValidUserInput(string requestedMove) //e4, Rxh5, Ba2
+        public void IssueMove(string requestedMove)
+        {
+
+        }
+
+        private bool IsValidUserInput(string requestedMove) //e4, Rxh5, Ba2
         {
             if(string.IsNullOrEmpty(requestedMove))
             {

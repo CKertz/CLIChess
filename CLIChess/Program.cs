@@ -6,8 +6,9 @@ namespace CLIChess
     {
         static void Main(string[] args)
         {
+            var userInput = new UserInput();
             BoardSetup.SetupChessBoard();
-            UserInput.PlayGame();
+            userInput.PlayGame();
         }
     }
 }

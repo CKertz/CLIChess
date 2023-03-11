@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.33130.400
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLIChess", "CLIChess\CLIChess.csproj", "{2B200920-4C4D-4AA4-BE19-3C68DA7CEC28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CLIChess", "CLIChess\CLIChess.csproj", "{2B200920-4C4D-4AA4-BE19-3C68DA7CEC28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLIChess.Tests", "CLIChess.Tests\CLIChess.Tests.csproj", "{D7611FE4-343A-4F00-ADC2-37968242AFD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2B200920-4C4D-4AA4-BE19-3C68DA7CEC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B200920-4C4D-4AA4-BE19-3C68DA7CEC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B200920-4C4D-4AA4-BE19-3C68DA7CEC28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7611FE4-343A-4F00-ADC2-37968242AFD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7611FE4-343A-4F00-ADC2-37968242AFD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7611FE4-343A-4F00-ADC2-37968242AFD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7611FE4-343A-4F00-ADC2-37968242AFD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
