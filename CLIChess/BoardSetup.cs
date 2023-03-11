@@ -14,7 +14,7 @@ namespace CLIChess
 
         //value of 'a'-1 when casted to int. this is just used as an easy way to give coordinates to tiles on creation of a board
         private const int asciiHelper = 96;
-        public static void SetupChessBoard()
+        public static List<BoardTile> SetupChessBoard()
         {
             List<BoardTile> ChessBoard = new List<BoardTile>();
             for (int i = 1 + asciiHelper; i <= 8 + asciiHelper; i++)
@@ -32,15 +32,16 @@ namespace CLIChess
                     }
                     AddPieceToBoard(newTile);
                     ChessBoard.Add(newTile);
-                    //Console.WriteLine("tile created with coordinates of: " + newTile.XCoordinate + newTile.YCoordinate+ " " + newTile.TileColor);
-                    //if (newTile.OccupyingPiece != null)
-                    //{
-                    //    var color = newTile.OccupyingPiece.ChessPieceColor.ToString();
-                    //    var piecename = newTile.OccupyingPiece.ChessPieceName.ToString();
-                    //    Console.WriteLine(color + piecename);
-                    //}
-                }
+                    Console.WriteLine("tile created with coordinates of: " + newTile.XCoordinate + newTile.YCoordinate + " " + newTile.TileColor);
+                    if (newTile.OccupyingPiece != null)
+                    {
+                        var color = newTile.OccupyingPiece.ChessPieceColor.ToString();
+                        var piecename = newTile.OccupyingPiece.ChessPieceName.ToString();
+                        Console.WriteLine(color + piecename);
+                    }
+                }                
             }
+            return ChessBoard;
         }
         public static void AddPieceToBoard(BoardTile tile)
         {

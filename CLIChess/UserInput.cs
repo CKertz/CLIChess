@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CLIChess.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace CLIChess
     {
         private static int moveCount = 0;
         private static bool gameOver = false;
+        private static bool isWhiteMove = false;
 
         //TODO: probably a less repetitive way to go about this. ALSO plenty of non-basic moves
         // that will need to be considered valid later on. https://www.chesshouse.com/blogs/education/how-to-read-and-write-algebraic-chess-notation#:~:text=Chess%20Notation%20describes%20each%20move,K%E2%80%9D%2C%20which%20is%20King.
@@ -40,25 +42,49 @@ namespace CLIChess
             validThirdTokens,
             validFourthTokens
         };
-        public bool PlayGame()
+        public bool PlayGame(List<BoardTile> chessBoard)
         {
+            Console.WriteLine("New game is ready.");
             while(!gameOver)
             {
-                Console.WriteLine("Enter a valid move");
+                string teamToMove = isWhiteMove ? "White" : "Black";
+                Console.WriteLine("Your move, " + teamToMove);
                 var res = Console.ReadLine();
                 if(IsValidUserInput(res))
                 {
                     //attempt to issue move
-                    IssueMove(res);
+                    IssueMove(res, isWhiteMove,chessBoard);
                 }
             }
             Console.WriteLine("Game over in " + moveCount + "moves");
             return true;
         }
 
-        public void IssueMove(string requestedMove)
+        public void IssueMove(string requestedMove, bool isWhiteMove, List<BoardTile> chessBoard)
         {
-
+            //peek first token to determine what piece is attempting to move.
+            //verify the correct team is moving it and let the piece logic handle from there
+            //see last 2 tokens for desired x/y coords, 
+            char[] parsedMove = requestedMove.ToCharArray();
+            var tile = chessBoard.Where(x => (x.XCoordinate == parsedMove.Last() - 1) && (x.YCoordinate == parsedMove.Last())).FirstOrDefault();
+            
+            tile.OccupyingPiece.Move(chessBoard, parsedMove.ElementAt(parsedMove.Last()-1), parsedMove.Last());
+            //switch (parsedMove[0])
+            //{
+            //    case 'R':
+            //        break;
+            //    case 'K':
+            //        break;
+            //    case 'Q':
+            //        break;
+            //    case 'B':
+            //        break;
+            //    case 'N':
+            //        break;
+            //    default:
+            //        //pawn, castles, ...
+            //        break;
+            //}
         }
 
         private bool IsValidUserInput(string requestedMove) //e4, Rxh5, Ba2

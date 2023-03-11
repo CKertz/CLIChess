@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CLIChess.Models.Pieces
 {
-    public abstract class ChessPiece : IChessPiece
+    public abstract class ChessPiece //: IChessPiece
     {
         public PieceName ChessPieceName { get; set; }
         public Color ChessPieceColor { get; set; }
         public int YCoordinate { get; set; }
         public char XCoordinate { get; set; }
-        public abstract void MovePiece(List<BoardTile> chessBoard, char desiredXCoord, int desiredYCoord);
+        public abstract void Move(List<BoardTile> chessBoard, char desiredXCoord, int desiredYCoord);
     }
 }

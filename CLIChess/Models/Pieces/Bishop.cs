@@ -7,15 +7,20 @@ using System.Threading.Tasks;
 
 namespace CLIChess.Models
 {
-    class Bishop : ChessPiece
+    public class Bishop : ChessPiece
     {
-        public override void MovePiece(List<BoardTile> chessBoard, char desiredXCoord, int desiredYCoord)
-        {
-
-        }
         public Bishop()
         {
             ChessPieceName = PieceName.Bishop;
+        }
+        public override void Move(List<BoardTile> chessBoard, char desiredXCoord, int desiredYCoord)
+        {
+            //can move right/left/up/down unless collision with a piece OR edge of board
+            //
+            if (BoardRules.IsInBounds(desiredXCoord, desiredYCoord) && !BoardRules.IsColliding(desiredXCoord, desiredYCoord, chessBoard))
+            {
+
+            }
         }
     }
 }

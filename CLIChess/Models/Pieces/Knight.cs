@@ -7,15 +7,19 @@ using System.Threading.Tasks;
 
 namespace CLIChess.Models
 {
-    class Knight : ChessPiece
+    public class Knight : ChessPiece
     {
-        public override void MovePiece(List<BoardTile> chessBoard, char desiredXCoord, int desiredYCoord)
-        {
-
-        }
         public Knight()
         {
             ChessPieceName = PieceName.Knight;
+        }
+
+        public override void Move(List<BoardTile> chessBoard, char desiredXCoord, int desiredYCoord)
+        {
+            if (BoardRules.IsInBounds(desiredXCoord, desiredYCoord) && !BoardRules.IsColliding(desiredXCoord, desiredYCoord, chessBoard))
+            {
+
+            }
         }
     }
 }
