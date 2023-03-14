@@ -13,7 +13,7 @@ namespace CLIChess.Models
         {
             ChessPieceName = PieceName.Bishop;
         }
-        public override void Move(List<BoardTile> chessBoard, char desiredXCoord, int desiredYCoord)
+        public override bool Move(List<BoardTile> chessBoard, char desiredXCoord, int desiredYCoord, bool isWhiteMove)
         {
             //can move right/left/up/down unless collision with a piece OR edge of board
             //
@@ -21,6 +21,8 @@ namespace CLIChess.Models
             {
 
             }
+            return false;
+
         }
     }
 }

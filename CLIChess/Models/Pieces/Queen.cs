@@ -14,12 +14,14 @@ namespace CLIChess.Models
             ChessPieceName = PieceName.Queen;
         }
 
-        public override void Move(List<BoardTile> chessBoard, char desiredXCoord, int desiredYCoord)
+        public override bool Move(List<BoardTile> chessBoard, char desiredXCoord, int desiredYCoord, bool isWhiteMove)
         {
             if (BoardRules.IsInBounds(desiredXCoord, desiredYCoord) && !BoardRules.IsColliding(desiredXCoord, desiredYCoord, chessBoard))
             {
 
             }
+            return false;
+
         }
     }
 }

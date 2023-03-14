@@ -1,4 +1,5 @@
 ﻿using CLIChess.Models;
+using CLIChess.Models.Pieces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,30 +61,47 @@ namespace CLIChess
             return true;
         }
 
-        public void IssueMove(string requestedMove, bool isWhiteMove, List<BoardTile> chessBoard)
+        public bool IssueMove(string requestedMove, bool isWhiteMove, List<BoardTile> chessBoard)
         {
             //peek first token to determine what piece is attempting to move.
             //verify the correct team is moving it and let the piece logic handle from there
             //see last 2 tokens for desired x/y coords, 
             char[] parsedMove = requestedMove.ToCharArray();
-            var tile = chessBoard.Where(x => (x.XCoordinate == parsedMove.Last() - 1) && (x.YCoordinate == parsedMove.Last())).FirstOrDefault();
-            
-            tile.OccupyingPiece.Move(chessBoard, parsedMove.ElementAt(parsedMove.Last()-1), parsedMove.Last());
-            //switch (parsedMove[0])
+
+            //TODO: there is surely a cleaner way to do this other than making a temp of each piece
+            switch (parsedMove[0])
+            {
+                case 'R':
+                    //pawn, castles, ...
+                    Rook rook = new Rook();
+                    //TODO: temp hardcoded
+                    rook.Move(chessBoard, parsedMove[1], int.Parse(parsedMove[2].ToString()), isWhiteMove);
+                    break;
+                case 'K':
+                    break;
+                case 'Q':
+                    break;
+                case 'B':
+                    break;
+                case 'N':
+                    break;
+                default:
+                    //pawn, castles, ...
+                    Pawn pawn = new Pawn();
+                    pawn.Move(chessBoard, parsedMove[0], int.Parse(parsedMove[1].ToString()), isWhiteMove);               
+                    break;
+            }
+            return false;
+        }
+
+        private bool IsPieceToMoveCorrectColor()
+        {
+            return true;
+            //TODO: 
+            //if (tile.OccupyingPiece.ChessPieceColor == Color.White && !isWhiteMove)
             //{
-            //    case 'R':
-            //        break;
-            //    case 'K':
-            //        break;
-            //    case 'Q':
-            //        break;
-            //    case 'B':
-            //        break;
-            //    case 'N':
-            //        break;
-            //    default:
-            //        //pawn, castles, ...
-            //        break;
+            //    Console.WriteLine("That isn't your piece to move");
+            //    return false;
             //}
         }
 
